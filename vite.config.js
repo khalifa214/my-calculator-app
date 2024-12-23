@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      mathjs: require.resolve("mathjs"),
+      // mathjs: require.resolve("mathjs"),
     },
   },
 })

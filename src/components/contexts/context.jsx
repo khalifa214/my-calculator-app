@@ -5,9 +5,21 @@ export const CalculatorContexts = createContext();
 
 const CalculatorProvider = (props) => {
     const [inputValue, setInputValue] = useState("");
+    const [resetValue, setResetValue] = useState(false); 
 
     const buttonHandler = (event) => {
-        setInputValue(prevValue => prevValue + event.target.value);
+        if (inputValue !== "" && resetValue === true) {
+            if (event.target.value == "x" || event.target.value == "/" || event.target.value == "+" || event.target.value == "-") {
+                setInputValue(prevValue => prevValue + event.target.value);
+                setResetValue(false);
+            } else {
+                setResetValue(false);
+                setInputValue("");
+                setInputValue(prevValue => prevValue + event.target.value);
+            }
+        } else {
+            setInputValue(prevValue => prevValue + event.target.value);
+        }
     }
 
     const removeLastCharHandler = () => {
@@ -15,8 +27,9 @@ const CalculatorProvider = (props) => {
     }
 
     const countCalculatorHandler = () => {
-        const result = math.evaluate(inputValue.replace('x', '*'));
+        const result = math.evaluate(inputValue.replace(/x/g, '*'));
         setInputValue(String(result));
+        setResetValue(true);
     }
 
     return (
