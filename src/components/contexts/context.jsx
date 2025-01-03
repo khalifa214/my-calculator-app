@@ -5,11 +5,16 @@ export const CalculatorContexts = createContext();
 
 const CalculatorProvider = (props) => {
     const [inputValue, setInputValue] = useState("");
-    const [resetValue, setResetValue] = useState(false); 
+    const [resetValue, setResetValue] = useState(false);
+    const [currentPlaneFigure, setCurrentPlaneFigure] = useState("");
+    const [currentFormula, setCurrentFormula] = useState(""); 
+    const [inputData, setInputData] = useState("");
+    const [result, setResult] = useState("");
 
     const buttonHandler = (event) => {
         if (inputValue !== "" && resetValue === true) {
-            if (event.target.value == "x" || event.target.value == "/" || event.target.value == "+" || event.target.value == "-") {
+            const operator = "+-/x";
+            if (operator.includes(event.target.value)) {
                 setInputValue(prevValue => prevValue + event.target.value);
                 setResetValue(false);
             } else {
@@ -32,14 +37,40 @@ const CalculatorProvider = (props) => {
         setResetValue(true);
     }
 
+    //fungsi fungsi untuk geometri
+    const onChangeInput = (event) => {
+        const {id, value} = event.target;
+        setInputData({...inputData, [id]: value});
+    };
+
+    const countSquareFormHandler = (event) => {
+        event.preventDefault();
+        if (currentFormula === "keliling") {
+            setResult(4*parseFloat(inputData.sisi));
+        }
+        if (currentFormula === "luas") {
+            setResult(parseFloat(inputData.sisi)**2);
+        }
+    }
+
     return (
         <CalculatorContexts.Provider value={
             {
+                //calculator
                 buttonHandler,
                 inputValue,
                 setInputValue,
                 removeLastCharHandler,
-                countCalculatorHandler
+                countCalculatorHandler,
+                //geometry
+                onChangeInput,
+                currentFormula,
+                currentPlaneFigure,
+                setCurrentFormula,
+                setCurrentPlaneFigure,
+                result,
+                setResult,
+                countSquareFormHandler
             }
         }>
             {props.children}

@@ -1,14 +1,15 @@
 import Calculator from "./calculator";
+import GeometryLayout from "./geometry-layout";
 
 const LayOut = () => {
 
     return (
-        <div className="w-full min-h-screen bg-gray-100 md:flex px-[10px] py-[20px]">
-            <div className="w-full md:h-[93vh] flex justify-center items-center p-[5px]">
+        <div className="w-full min-h-screen bg-blueBg md:flex px-[10px] py-[20px]">
+            <div className="w-full flex justify-center items-center p-[5px]">
                 <Calculator/>
             </div>
-            <div className="w-full bg-blue-300 h-[200px]">
-
+            <div className="w-full flex justify-center items-center p-[5px] pr-[20px]">
+                <GeometryLayout/>
             </div>
         </div>
     )
