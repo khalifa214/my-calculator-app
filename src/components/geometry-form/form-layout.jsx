@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { CalculatorContexts } from "../contexts/context";
 import SquareForm from "./square-form";
+import RectangleForm from "./rectangle-form";
 
 const FormLayout = () => {
 
@@ -18,9 +19,12 @@ const FormLayout = () => {
             }
             { (currentPlaneFigure && currentFormula) && 
                 (
-                    <div className="w-[80%] mx-auto my-[20px] h-[200px]">
+                    <div className="w-[80%] mx-auto my-[20px] min-h-[200px]">
                         { currentPlaneFigure === "square" && 
                             <SquareForm/>
+                        }
+                        { currentPlaneFigure === "rectangle" && 
+                            <RectangleForm/>
                         }
                     </div>
                 )

@@ -9,7 +9,7 @@ const Calculator = () => {
     return (
         <div className="max-w-[400px] p-[20px] bg-gray-300 rounded-lg border-2 border-solid border-gray-600">
             <input value={inputValue} className="bg-white rounded-md w-full text-[20px] py-[2px] px-[8px]" type="text" disabled/>
-            <div className="grid grid-cols-4 gap-x-3 gap-y-6 mt-[10px] relative">
+            <div className="grid grid-cols-4 gap-x-3 gap-y-6 mt-[20px] relative">
                 <button value="(" className={buttonStyle} onClick={buttonHandler}>
                     (
                 </button>

@@ -41,7 +41,7 @@ const CalculatorProvider = (props) => {
     const onChangeInput = (event) => {
         const {id, value} = event.target;
         setInputData({...inputData, [id]: value});
-    };
+    }
 
     const countSquareFormHandler = (event) => {
         event.preventDefault();
@@ -50,6 +50,16 @@ const CalculatorProvider = (props) => {
         }
         if (currentFormula === "luas") {
             setResult(parseFloat(inputData.sisi)**2);
+        }
+    }
+
+    const countRectangleFormHandler = (event) => {
+        event.preventDefault();
+        if (currentFormula === "keliling") {
+            setResult(2*( parseFloat(inputData.panjang) + parseFloat(inputData.lebar)));
+        }
+        if (currentFormula === "luas") {
+            setResult(parseFloat(inputData.panjang)*parseFloat(inputData.lebar));
         }
     }
 
@@ -70,7 +80,8 @@ const CalculatorProvider = (props) => {
                 setCurrentPlaneFigure,
                 result,
                 setResult,
-                countSquareFormHandler
+                countSquareFormHandler,
+                countRectangleFormHandler
             }
         }>
             {props.children}
