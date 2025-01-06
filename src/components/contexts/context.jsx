@@ -63,6 +63,28 @@ const CalculatorProvider = (props) => {
         }
     }
 
+    const countCircleFormHandler = (event) => {
+        event.preventDefault();
+        if (currentFormula === "keliling") {
+            let keliling = Math.PI * (2*parseFloat(inputData.jariJari)); 
+            setResult(keliling.toFixed(2));
+        }
+        if (currentFormula === "luas") {
+            let luas = Math.PI * (parseFloat(inputData.jariJari)**2)
+            setResult(luas.toFixed(2));
+        }
+    }
+
+    const countTriangleFormHandler = (event) => {
+        event.preventDefault();
+        if (currentFormula === "keliling") {
+            setResult(parseFloat(inputData.sisiA) + parseFloat(inputData.sisiB) + parseFloat(inputData.sisiC));
+        }
+        if (currentFormula === "luas") {
+            setResult(1/2 * parseFloat(inputData.alas) * parseFloat(inputData.tinggi));
+        }
+    }
+
     return (
         <CalculatorContexts.Provider value={
             {
@@ -81,7 +103,9 @@ const CalculatorProvider = (props) => {
                 result,
                 setResult,
                 countSquareFormHandler,
-                countRectangleFormHandler
+                countRectangleFormHandler,
+                countCircleFormHandler,
+                countTriangleFormHandler
             }
         }>
             {props.children}

@@ -2,6 +2,8 @@ import { useContext } from "react";
 import { CalculatorContexts } from "../contexts/context";
 import SquareForm from "./square-form";
 import RectangleForm from "./rectangle-form";
+import CircleForm from "./circle-form";
+import TriangleForm from "./triangle-form";
 
 const FormLayout = () => {
 
@@ -25,6 +27,12 @@ const FormLayout = () => {
                         }
                         { currentPlaneFigure === "rectangle" && 
                             <RectangleForm/>
+                        }
+                        { currentPlaneFigure === "circle" && 
+                            <CircleForm/>
+                        }
+                        { currentPlaneFigure === "triangle" && 
+                            <TriangleForm/>
                         }
                     </div>
                 )

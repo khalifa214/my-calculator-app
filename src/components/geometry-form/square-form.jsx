@@ -17,9 +17,13 @@ const SquareForm = () => {
                 Hitung
             </button>
             {result &&
-                <h1 className="mx-auto mt-[15px] w-fit text-[18px]">
-                    {currentFormula.charAt(0).toUpperCase() + currentFormula.slice(1)} : <strong>{result}</strong> cm
-                </h1>
+                <div className="h-[40px] mt-[20px]">
+                    {result &&
+                        <h1 className="mx-auto w-fit text-[18px]">
+                            {currentFormula.charAt(0).toUpperCase() + currentFormula.slice(1)} : <strong>{result}</strong> cm
+                        </h1>
+                    }
+                </div>
             }
         </form>
     )
